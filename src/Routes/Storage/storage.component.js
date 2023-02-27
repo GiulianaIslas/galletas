@@ -1,6 +1,6 @@
 import {useState} from "react";
 import './storage.styles.scss';
-import IngredientForm from "../../Components/Ingredient-form/ingredient-form.component";
+import IngredientForm from "../../Components/Ingredient-form/ingredient-form.component.js";
 
 const Storage = () => {
     const defaultFormFields = {

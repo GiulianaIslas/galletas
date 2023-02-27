@@ -1,4 +1,4 @@
-import CategoryContainer from "../../Components/category-container/category-container.component";
+import CategoryContainer from "../../Components/category-container/category-container.component.js";
 import './home.styles.scss';
 const Home = () => {
     const categories = [

@@ -1,9 +1,9 @@
 import './App.scss';
 import {Routes,Route} from "react-router-dom";
-import Home from "./Routes/Home/home.component";
-import Storage from "./Routes/Storage/storage.component";
-import Factory from "./Routes/Factory/factory.component";
-import Navigation from "./Routes/Navigation/navigation.component";
+import Home from "./Routes/Home/home.component.js";
+import Storage from "./Routes/Storage/storage.component.js";
+import Factory from "./Routes/Factory/factory.component.js";
+import Navigation from "./Routes/Navigation/navigation.component.js";
 const App =()=> {
     return (
         <Routes>
