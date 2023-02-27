@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import './category-container.styles.scss'
-import Button from "../button/button.component";
-import navigationComponent from "../../Routes/Navigation/navigation.component";
+import Button from "../button/button.component.js";
+import navigationComponent from "../../Routes/Navigation/navigation.component.js";
 const CategoryContainer = ({category}) => {
     let navigate = useNavigate();
     const {buttonTitle,url,route,type} = category;

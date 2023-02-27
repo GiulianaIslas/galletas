@@ -1,6 +1,6 @@
 import {useState} from "react";
-import FormInput from "../Form-input/form-input.component";
-import Button from "../../Components/button/button.component";
+import FormInput from "../Form-input/form-input.component.js";
+import Button from "../button/button.component.js";
 import './ingredient-form.styles.scss';
 const IngredientForm = () =>{
     const defaultFormFields = {
