@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose';
+import almacenRouter from './routes/almacenRoutes.js';
 
 // Conectar con mongodb
 mongoose.Promise = global.Promise
@@ -10,7 +11,7 @@ mongoose.connect('mongodb://localhost/restapis',{
 // Crear la app del servidor
 const app = express()
 app.use(express.static('./build'))
-
+app.use('/almacen', almacenRouter)
 // Definir el puerto y arrancar el servidor
 const port = 3000;
 
