@@ -6,6 +6,7 @@ import Select from 'react-select';
 
 const RecipeForm = () => {
     const defaultFormFields = {
+        id:0,
         name:'',
         ingredients:[],
     }
@@ -25,7 +26,7 @@ const RecipeForm = () => {
     ]
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
-    const {name} = formFields;
+    const {name,id} = formFields;
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
@@ -59,7 +60,10 @@ const RecipeForm = () => {
         setQuantity('');
     }
     const submitData = (event) => {
+        submitIngredient(event);
         event.preventDefault();
+        const id=Math.random()*100000000;
+        formFields.id=Math.round(id);
         console.log(JSON.stringify(formFields));
         setIndex(1);
     }
@@ -71,12 +75,18 @@ const RecipeForm = () => {
                 <h2 >Editar o Agregar Receta</h2>
                 <form onSubmit={submitData} className='input-container'>
                     <FormInput label='Nombre' required type='text' onChange={handleChange} name='name' value={name}/>
+                    <h3>Agrega los ingredientes</h3>
+                    <span>Presiona +INGREDIENTE cuando sean correctos los datos del ingrediente actual y quiereas agregar otro, cuando finalices de agregar ingredientes presiona TERMINAR.</span>
                     <div className='ingredients-container'>
-                        <Select className='select' onChange={handleSelectChange} options={ingredients.map(sup => ({label:sup.name,value:sup.id}))}/>
+                        <label className='label'>Ingrediente</label>
+                            <Select className='select' onChange={handleSelectChange} options={ingredients.map(sup => ({label:sup.name,value:sup.id}))}/>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>
-                    <Button buttonType='light' type='button' onClick={submitIngredient}>Confirmar ingrediente</Button>
-                    <Button  buttonType='dark' type='submit'>SIGUIENTE</Button>
+                    <div className='buttons-container'>
+                        <Button buttonType='light' type='button' onClick={submitIngredient}>+INGREDIENTE</Button>
+                        <Button  buttonType='dark' type='submit'>TERMINAR</Button>
+                    </div>
+
                 </form>
             </div>
         );
