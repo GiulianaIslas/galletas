@@ -1,32 +1,30 @@
 import express from 'express'
 import mongoose from 'mongoose';
-import almacenRouter from './routes/almacenRoutes.js';
+import warehouse from './routes/warehouseRoutes.js';
 import bodyParser from 'body-parser'
 
-// Conectar con mongodb
+// Connect to mongodb
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/restapis',{
     useNewUrlParser: true
 })
 
-// Crear la app del servidor
+// Create server app
 const app = express()
 
-// Renderizar react
+// Add react rendering
 app.use(express.static('./build'))
 
-// Agregar body parser para recibir json por medio de url
+// Enable bodyparser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-// Agregar routes
-app.use('/api', almacenRouter)
+// Adding routes
+app.use('/api', warehouse)
 
-
-
-// Definir el puerto y arrancar el servidor
+// Define port and start server
 const port = 3000;
 
-const listenFunction = () => console.log(`El servidor esta corriendo en el puerto : ${port}`)
+const listenFunction = () => console.log(`Server running in port : ${port}`)
 app.listen(port, listenFunction)
 

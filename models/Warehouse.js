@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema
 
-const almacenSchema = new Schema({
+const warehouseSchema = new Schema({
     ingrediente:{
         type: String,
         trim : true
@@ -12,4 +12,4 @@ const almacenSchema = new Schema({
     }
 })
 
-export const Almacen = mongoose.model('Almacen', almacenSchema)
+export const Warehouse = mongoose.model('Warehouse', warehouseSchema)
