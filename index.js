@@ -1,11 +1,11 @@
 import express from 'express'
 import mongoose from 'mongoose';
-import warehouse from './routes/warehouseRoutes.js';
+import router from './routes/router.js';
 import bodyParser from 'body-parser'
 
 // Connect to mongodb
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/restapis',{
+mongoose.connect('mongodb://localhost/cookieFactory',{
     useNewUrlParser: true
 })
 
@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 // Adding routes
-app.use('/api', warehouse)
+app.use('/api', router)
 
 // Define port and start server
 const port = 3000;
