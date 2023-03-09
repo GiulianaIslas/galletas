@@ -3,11 +3,14 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
 const warehouseSchema = new Schema({
-    ingrediente:{
+    id:{
+        type: Number
+    },
+    name:{
         type: String,
         trim : true
     },
-    cantidad: {
+    quantity: {
         type: Number,
     }
 })

@@ -2,15 +2,18 @@ import mongoose  from "mongoose"
 
 const Schema = mongoose.Schema
 
-const formulasScheema = new Schema({
-    nombreFormula:{
+const recipeScheema = new Schema({
+    id:{
         type: String,
         trim: true
     },
-    formula:{
+    name:{
         type: String,
         trim: true
+    },
+    ingredients:{
+        type: Array
     }
 })
 
-export const formulas = mongoose.model("Formula", formulasScheema)
+export const Recipe = mongoose.model("Formula", recipeScheema)
