@@ -1,0 +1,3 @@
+METHOD             ACTION                                    URL                                        PARAMS
+POST        Adds an element or increases quantity      <url>/api/almacen/nuevoIngrediente        { id, ingrediente, cantidad}
+GET         Returns all the elements                   <url>/api/almacen/obtenerIngredientes               null
