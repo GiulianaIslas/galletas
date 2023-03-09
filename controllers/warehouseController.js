@@ -11,6 +11,6 @@ export const addIngredient = async (req, res) => {
         }
         else{
             await Warehouse.create(req.body).then( () => res.sendStatus(200) )
-            
         }
 }
+
