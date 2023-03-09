@@ -1,9 +1,31 @@
 .ingredient-container {
+  background-color: white;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  justify-content: center;
+  width: 32%;
+  height: 360px;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 10px;
+  .form-container{
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+  }
   h2{
-    margin-left: 20px;
+    margin: 0;
+    padding: 24px 10px;
+    align-self: center;
   }
 
+}
+em {
+  color: coral;
+  font-weight: bolder;
+  font-size: larger;
+}
+p {
+  color: black;
+  font-size: 15px;
 }

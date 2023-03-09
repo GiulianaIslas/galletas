@@ -9,13 +9,14 @@ $main-color: black;
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 5px 0;
+  width: 100%;
 
   .form-input {
     background: none;
     background-color: white;
     color: $sub-color;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
@@ -39,7 +40,7 @@ $main-color: black;
 
   .form-input-label {
     color: $sub-color;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
