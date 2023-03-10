@@ -24,11 +24,11 @@ export const addRecipe = async ( req, res ) => {
         const exists = await Recipe.findOne( {name: req.body.name} )
         if( !exists ){
             await Recipe.create(req.body)
-            res.sendStatus(200)
+            res.json({updated: true})
         }
         else{
             await Recipe.findOneAndUpdate({name: req.body.name}, req.body)
-            res.sendStatus(200)
+            res.sendStatus({added: true})
         }
     }
 }
