@@ -5,7 +5,6 @@ import { Warehouse } from '../models/Warehouse.js'
 export const addIngredient = async (req, res) => {
     console.log(req.body)
         const ingredient = {
-            id: req.body.id,
             name: req.body.name.toUpperCase(),
             quantity: req.body.quantity
         }
