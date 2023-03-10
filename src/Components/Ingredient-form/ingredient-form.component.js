@@ -25,27 +25,20 @@ const IngredientForm = () =>{
         event.preventDefault();
         setFormFields({...formFields,['quantity']:event.target.valueAsNumber});
     }
-    ///////////////ENDPOINT: addIngredient(json)
 
-    const sumbitData = (event) => {
+    const sumbitData =  (event) => {
         event.preventDefault();
 
         fetch("http://localhost:3000/api/addIngredient", {
             method: "POST",
-            headers: {"Content-Type": "json"},
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formFields),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-                setSuccess(true);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-
+        });
+        setSuccess(true);
         console.log(formFields);
+        setFormFields(defaultFormFields);
         setContainerIndex(1);
+
     }
 
     const handleClick = () => {
