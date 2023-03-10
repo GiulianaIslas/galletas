@@ -26,18 +26,27 @@ const IngredientForm = () =>{
         setFormFields({...formFields,['quantity']:event.target.valueAsNumber});
     }
 
-    const sumbitData =  (event) => {
+    const sumbitData = async (event) => {
         event.preventDefault();
-
-        fetch("http://localhost:3000/api/addIngredient", {
+        const fields = {
+            id: id,
+            name: name,
+            quantity: quantity
+        };
+        await fetch("http://localhost:3000/api/addIngredient", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formFields),
-        });
-        setSuccess(true);
-        console.log(formFields);
-        setFormFields(defaultFormFields);
-        setContainerIndex(1);
+            body: JSON.stringify(fields),
+        })
+            .then((response)=>response.json())
+            .then((data)=> {
+                setSuccess(true);
+                setFormFields(defaultFormFields);
+                setContainerIndex(1);
+            })
+            .catch((error)=>console.log(error));
+
+
 
     }
 
