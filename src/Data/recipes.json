@@ -1,0 +1,50 @@
+[
+  {
+    "id": 74529,
+    "name": "chispas",
+    "ingredients": [
+      {
+      "id": 45254,
+      "name": "azucar",
+      "quantity": 3
+      },
+      {
+        "id":87512,
+        "name": "chispas",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "id": 45254,
+    "name": "mantequilla",
+    "ingredients": [
+      {
+        "id": 45254,
+        "name": "azucar",
+        "quantity": 3
+      },
+      {
+        "id":87512,
+        "name": "harina",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "id": 45768,
+    "name": "chocolate",
+    "ingredients": [
+      {
+        "id": 45254,
+        "name": "azucar",
+        "quantity": 3
+      },
+      {
+        "id":87512,
+        "name": "harina",
+        "quantity": 3
+      }
+    ]
+  }
+]

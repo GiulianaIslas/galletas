@@ -1,9 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import FormInput from "../Form-input/form-input.component.js";
 import Button from "../button/button.component.js";
 import './recipe-form.styles.scss';
 import Select from 'react-select';
-
 const RecipeForm = () => {
     const defaultFormFields = {
         id:'',
@@ -24,11 +23,6 @@ const RecipeForm = () => {
             quantity:'8',
         }
     ]
-    const fetchIngredients = async () => {
-        await fetch ('http://localhost:3000/api/getAllIngredients')
-            .then((data)=>{return data.json()});
-    }
-    const options = fetchIngredients();
 
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
@@ -36,7 +30,20 @@ const RecipeForm = () => {
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
+    const [fetch,setFetch] = useState(null);
+    const [isLoading,setIsLoading] = useState(false);
 
+    /*
+    useEffect(()=>{
+        fetch ('../../Data/ingredients.json')
+            .then((data)=>{data.json()})
+            .then(data=> {
+                setFetch(JSON.parse(data));
+                setIsLoading(false);
+            })
+    },[]);
+
+     */
     //handlers
     const handleChange = (event) => {
         const {name,value} = event.target;
@@ -69,16 +76,18 @@ const RecipeForm = () => {
         event.preventDefault();
         const id=Math.random()*100000000;
         formFields.id=Math.round(id);
+        /*
         fetch('http://localhost:3000/api/editRecipe',{
             method: 'PUT',
             body:JSON.stringify(formFields)
         }).then(response => response.json()).then(json=>console.log(json));
-        console.log(JSON.stringify(formFields));
+         */
+        console.log(formFields);
         setIndex(1);
     }
 
 
-    if (index === 0)
+    if (index === 0 && !isLoading)
         return(
             <div className='recipe-container'>
                 <h2 >Editar o Agregar Receta</h2>
@@ -89,7 +98,7 @@ const RecipeForm = () => {
                     <div className='ingredients-container'>
                         <label className='label'>Ingrediente</label>
                             <div className='select-recipe'>
-                                <Select onChange={handleSelectChange} options={options.map(sup => ({label:sup.name,value:sup.id}))}/>
+                                <Select onChange={handleSelectChange} options={ingredients.map(op => ({label:op.name,value:op.id}))}/>
                             </div>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>

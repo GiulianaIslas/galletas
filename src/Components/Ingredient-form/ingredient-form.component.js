@@ -26,21 +26,29 @@ const IngredientForm = () =>{
         setFormFields({...formFields,['quantity']:event.target.valueAsNumber});
     }
 
-    const sumbitData = async (event) => {
+    const sumbitData = (event) => {
         event.preventDefault();
         const fields = {
             id: formFields.id,
             name: formFields.name,
             quantity: formFields.quantity
         }
-        await fetch("http://localhost:3000/api/addIngredient", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formFields),
+        /*
+        fetch('../../Data/ingredients.json', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(fields)
         })
-        .then(response => response.json())
-        .then( json => json.success ? setSuccess(false) : setSuccess(true)  )
-        
+            .then(res => res.json())
+            .then(res=> {
+                console.log(res);
+                setSuccess('added');
+            })
+
+         */
+        setSuccess('added');
         setFormFields(defaultFormFields);
         setContainerIndex(1);
 
@@ -68,7 +76,7 @@ const IngredientForm = () =>{
         return (
             <div className='ingredient-container'>
                 <h2>Ingrediente Agregado!</h2>
-                <p>El ingrediente <em>{name.toUpperCase()}</em> fue agregado exitosamente al inventario. </p>
+                <p>El ingrediente <em>{name.toUpperCase()}</em> fue {success} exitosamente al inventario. </p>
                 <Button type='button'  buttonType='dark' onClick={handleClick}>REGRESAR</Button>
             </div>
         );
