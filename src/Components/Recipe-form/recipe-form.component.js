@@ -6,7 +6,7 @@ import Select from 'react-select';
 
 const RecipeForm = () => {
     const defaultFormFields = {
-        id:0,
+        id:'',
         name:'',
         ingredients:[],
     }
@@ -42,7 +42,7 @@ const RecipeForm = () => {
         console.log(ingredient);
     }
     const handleQuantityChange = (event) => {
-        setQuantity(event.target.value);
+        setQuantity(event.target.valueAsNumber);
         console.log(quantity);
     }
 
@@ -58,6 +58,7 @@ const RecipeForm = () => {
         console.log(JSON.stringify(formFields));
         setIngredient('');
         setQuantity('');
+        alert('Ingrediente agregado exitosamente a la receta');
     }
     const submitData = (event) => {
         submitIngredient(event);
@@ -79,7 +80,9 @@ const RecipeForm = () => {
                     <span>Presiona +INGREDIENTE cuando sean correctos los datos del ingrediente actual y quiereas agregar otro, cuando finalices de agregar ingredientes presiona TERMINAR.</span>
                     <div className='ingredients-container'>
                         <label className='label'>Ingrediente</label>
-                            <Select className='select' onChange={handleSelectChange} options={ingredients.map(sup => ({label:sup.name,value:sup.id}))}/>
+                            <div className='select-recipe'>
+                                <Select onChange={handleSelectChange} options={ingredients.map(sup => ({label:sup.name,value:sup.id}))}/>
+                            </div>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>
                     <div className='buttons-container'>

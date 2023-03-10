@@ -21,15 +21,18 @@ const IngredientForm = () =>{
         setFormFields({...formFields,[name]:value.toLowerCase()});
     }
 
+    const handleNumberChange = (event) => {
+        event.preventDefault();
+        setFormFields({...formFields,['quantity']:event.target.valueAsNumber});
+    }
     ///////////////ENDPOINT: addIngredient(json)
 
     const sumbitData = (event) => {
         event.preventDefault();
-        fetch("POST localhost:3000/api/addIngredient", {
+
+        fetch("http://localhost:3000/api/addIngredient", {
             method: "POST",
-            headers: {
-                "Content-Type": "ingredients/json",
-            },
+            headers: {"Content-Type": "json"},
             body: JSON.stringify(formFields),
         })
             .then((response) => response.json())
@@ -40,6 +43,8 @@ const IngredientForm = () =>{
             .catch((error) => {
                 console.error("Error:", error);
             });
+
+        console.log(formFields);
         setContainerIndex(1);
     }
 
@@ -54,7 +59,7 @@ const IngredientForm = () =>{
             <div className='ingredient-container'>
                 <h2>Añadir Ingrediente</h2>
                 <form onSubmit={sumbitData} className='form-container'>
-                    <FormInput label='Cantidad' required type='number' onChange={handleChange} name='quantity' value={quantity} />
+                    <FormInput label='Cantidad' required type='number' onChange={handleNumberChange} name='quantity' value={quantity} />
                     <FormInput label='Nombre' required type='text' onChange={handleChange} name='name' value={name} />
                     <Button type='submit'  buttonType='dark' >ACEPTAR</Button>
                 </form>
