@@ -4,14 +4,24 @@ import { Warehouse } from '../models/Warehouse.js'
 
 export const addIngredient = async (req, res) => {
     console.log(req.body)
+        const ingredient = {
+            id: req.body.id,
+            name: req.body.name.toUpperCase(),
+            quantity: req.body.quantity
+        }
         if (!req.body.name || !req.body.quantity || !req.body.name){
-            res.sendStatus(400)
+            res.json({success: false})
         }
         else if ( isNaN(req.body.quantity) ) {
-            res.sendStatus(400)
+            res.json({success: false})
         }
         else{
-            await Warehouse.create(req.body).then( () => res.sendStatus(200) )
+            if( await Warehouse.findOne({name: ingredient.name}) ){
+                res.json({success: true})
+            }
+            else{
+                await Warehouse.create(ingredient).then( () => res.json({success: true}) )
+            }
         }
 }
 
