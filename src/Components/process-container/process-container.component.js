@@ -1,5 +1,6 @@
 import Button from "../button/button.component.js";
 import './process-container.styles.scss'
+import IngredientStorage from "../Ingredient-storage/ingredient-storage.component.js";
 
 const ProcessContainer = () => {
     return(

@@ -16,9 +16,8 @@ export const addIngredient = async (req, res) => {
         }
         else{
             const existe = await Warehouse.findOne({name: ingredient.name}).exec()
-            console.log(existe)
             if( existe ){
-                console.log('existe')
+             
                 res.json({success: true})
             }
             else{
@@ -32,6 +31,5 @@ export const addIngredient = async (req, res) => {
 export const getAllIngredients = async(req, res) => {
 
     const ingredients = await Warehouse.find({}).exec()
-    console.log(ingredients)
     res.json( ingredients )
 }

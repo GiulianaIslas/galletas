@@ -8,6 +8,8 @@
   background-color: white;
   border-radius: 10px;
   align-items: center;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 .ingredient-storage{
   display: flex;
@@ -23,4 +25,8 @@
   border-radius: 5px;
   color: white;
   font-size: 13px;
+}
+
+.form-storage-select{
+    width: 50%;
 }
