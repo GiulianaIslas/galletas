@@ -1,31 +1,14 @@
 import './ingredient-storage.styles.scss'
 const IngredientStorage = () => {
     ////GET INGREDIENT LIST
-    const ingredients = [
-        {
-            id:74529,
-            name:'harina',
-            quantity:'5',
-        },
-        {
-            id:45254,
-            name:'azucar',
-            quantity:'8',
-        },
-        {
-            id:48675,
-            name:'chispas',
-            quantity:'10',
-        },
-        {
-            id:78549,
-            name:'mantequilla',
-            quantity:'8',
-        },
-    ];
+    const fetchIngredients = async () => {
+        await fetch ('http://localhost:3000/api/getAllIngredients')
+            .then((data)=>{return data.json()});
+    }
+    const ingredients = fetchIngredients();
 
-    const renderList = ingredients.map(({name,id})=>
-        <div key={id} className='ingredient-storage'>{name.toUpperCase()}</div>
+    const renderList = ingredients.map(({name,id,quantity})=>
+        (quantity>0 && <div key={id} className='ingredient-storage'>{name.toUpperCase()}</div>)
     );
     return (
         <div className='ingredient-storage-container'>

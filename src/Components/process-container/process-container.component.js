@@ -6,16 +6,16 @@ const ProcessContainer = () => {
         <div className='process-container'>
             <div className='row'>
                 <Button buttonType='light' type='button'>Iniciar Amasado</Button>
-                <div className='amasador'>AMASADOR</div>
+                <div className='amasador'>3.AMASADOR</div>
                 <div className='column-container'>
-                    <div className='balanza'>BALANZA</div>
-                    <div className='deposito'>DEPOSITO</div>
+                    <div className='balanza'>1.BALANZA</div>
+                    <div className='deposito'>2.DEPOSITO</div>
                 </div>
                 <Button buttonType='light' type='button'>Iniciar a Pesar</Button>
             </div>
             <div className='row'>
-                <div className='molde'>MOLDE</div>
-                <div className='horno'>HORNO</div>
+                <div className='molde'>4.MOLDE</div>
+                <div className='horno'>5.HORNO</div>
                 <Button buttonType='light' type='button'>Iniciar Horneado</Button>
             </div>
         </div>
