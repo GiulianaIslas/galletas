@@ -35,18 +35,15 @@ const RecipeForm = () => {
 
 
     useEffect(()=>{
-        const url = './ingredients.json';
+        const url = "http://localhost:3000/api/getAllIngredients";
 
         const fetchData = async() => {
-        try{
-            const response = await fetch (url);
-            const json = await response.json();
-            console.log(json);
-            }catch (error) {
-            console.log("error");
-            }
-        };
-        fetchData();
+            await fetch(url)
+            .then( response => response.json() )
+            .then( json => console.log(json))
+            .catch( e => console.log(e) )
+        }
+        fetchData()
     },[]);
 
 

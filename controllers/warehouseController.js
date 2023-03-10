@@ -16,16 +16,23 @@ export const addIngredient = async (req, res) => {
             res.json({success: false})
         }
         else{
-            if( await Warehouse.findOne({name: ingredient.name}) ){
+            const existe = await Warehouse.findOne({name: ingredient.name}).exec()
+            console.log(existe)
+            if( existe ){
+                console.log('existe')
                 res.json({success: true})
             }
             else{
-                await Warehouse.create(ingredient).then( () => res.json({success: true}) )
+                await Warehouse.create(ingredient).then( e => console.log(e)  )
+                res.json({success: true})
             }
         }
 }
 
 
 export const getAllIngredients = async(req, res) => {
-    res.json( await Warehouse.find({}).exec)
+
+    const ingredients = await Warehouse.find({}).exec()
+    console.log(ingredients)
+    res.json( ingredients )
 }
