@@ -1,7 +1,8 @@
 import express from 'express'
-import mongoose from 'mongoose';
-import router from './routes/router.js';
+import mongoose from 'mongoose'
+import router from './routes/router.js'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 // Connect to mongodb
 mongoose.Promise = global.Promise
@@ -11,6 +12,8 @@ mongoose.connect('mongodb://localhost/cookieFactory',{
 
 // Create server app
 const app = express()
+
+app.use(cors())
 
 // Enable bodyparser
 app.use(bodyParser.json())

@@ -30,7 +30,7 @@ const RecipeForm = () => {
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
-    const [fetch,setFetch] = useState(null);
+
     const [isLoading,setIsLoading] = useState(false);
 
 
