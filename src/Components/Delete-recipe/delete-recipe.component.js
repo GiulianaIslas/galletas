@@ -25,7 +25,7 @@ const DeleteRecipe = () => {
     },[]);
 
     const handleSelectChange = ({value}) => {
-        setRecipe({...recipe,['id']:value});
+        setRecipe({...recipe,['name']:value});
     }
 
     const handleClick = () => {
@@ -53,7 +53,7 @@ const DeleteRecipe = () => {
                 <h2 >Eliminar Receta</h2>
                 <form onSubmit={submitData} className='delete-form-container'>
                     <div className='select'>
-                        <Select onChange={handleSelectChange} options={recipes.map(sup => ({label:sup.name,value:sup.id}))}/>
+                        <Select onChange={handleSelectChange} options={recipes.map(sup => ({label:sup.name,value:sup.name}))}/>
                     </div>
                     <Button buttonType='dark' type='submit'>ACEPTAR</Button>
                 </form>

@@ -92,7 +92,7 @@ const RecipeForm = () => {
                     <div className='ingredients-container'>
                         <label className='label'>Ingrediente</label>
                             <div className='select-recipe'>
-                                <Select onChange={handleSelectChange} options={ingredients.map(op => ({label:op.name.toLowerCase(),value:op.id}))}/>
+                                <Select onChange={handleSelectChange} options={ingredients.map(op => ({label:op.name.toLowerCase(),value:op.name}))}/>
                             </div>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>
