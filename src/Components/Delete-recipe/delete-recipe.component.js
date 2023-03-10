@@ -21,7 +21,7 @@ const DeleteRecipe = () => {
                 .then( json => setRecipes(json))
                 .catch( e => console.log(e) )
         }
-        fetchData()
+        fetchData();
     },[]);
 
     const handleSelectChange = ({value}) => {
