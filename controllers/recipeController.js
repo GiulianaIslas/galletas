@@ -43,3 +43,7 @@ export const deleteRecipe = async( req, res ) => {
         res.sendStatus(200)
     }
 }
+
+export const getAllRecipes = async (req, res) => {
+    res.json( await Recipe.find({}).exec())
+}

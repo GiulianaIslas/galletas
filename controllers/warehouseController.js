@@ -25,3 +25,7 @@ export const addIngredient = async (req, res) => {
         }
 }
 
+
+export const getAllIngredients = async(req, res) => {
+    res.json( await Warehouse.find({}).exec)
+}
