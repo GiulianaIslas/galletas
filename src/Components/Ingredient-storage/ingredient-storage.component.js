@@ -25,7 +25,7 @@ const IngredientStorage = () => {
     ];
 
     const renderList = ingredients.map(({name,id})=>
-        <div key={id} className='ingredient-storage'>{name}</div>
+        <div key={id} className='ingredient-storage'>{name.toUpperCase()}</div>
     );
     return (
         <div className='ingredient-storage-container'>
