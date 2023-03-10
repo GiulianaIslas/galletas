@@ -15,8 +15,8 @@ const recipeScheema = new Schema({
                     quantity: {
                         type: Number
                     },
-                    id: {
-                        type: Number
+                    name: {
+                        type: String
                     }
                 }
             ]

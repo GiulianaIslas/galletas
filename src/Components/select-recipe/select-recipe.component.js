@@ -33,6 +33,10 @@ const SelectRecipe = () => {
         setFormFields({...formFields,['name']:name.toLowerCase()});
     };
 
+    const startProcess = async() => {
+        
+    }
+
     return (
         <form className='form-storage-container'>
             <label>Receta </label>
@@ -45,7 +49,7 @@ const SelectRecipe = () => {
                 : ''
             }
             </select>
-            <Button buttonType='dark' type='submit'>INICIAR PROCESO</Button>
+            <Button buttonType='dark' type='submit' onClick={startProcess}>INICIAR PROCESO</Button>
         </form>
     );
 }

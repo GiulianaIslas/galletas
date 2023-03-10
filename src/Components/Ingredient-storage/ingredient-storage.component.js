@@ -15,7 +15,7 @@ const IngredientStorage = () => {
     }, [])
 
     const renderList = ingredients.map(({name,quantity})=>
-        (quantity>0 && <div key={Math.random(Date.now())} className='ingredient-storage'>{name.toUpperCase()}</div>)
+        (quantity>0 && <div key={Math.random() * Date.now()} className='ingredient-storage'>{name.toUpperCase()}</div>)
     );
     return (
         <div className='ingredient-storage-container'>

@@ -5,8 +5,7 @@ import './factory.styles.scss';
 const Factory = () => {
     return(
         <div className='background-img' style={{backgroundImage: `url('https://drive.google.com/uc?export=view&id=1Zt86tzbGgf8yrMlQRoGe5D5jtuORgR1J')`}}>
-            <SelectRecipe/>
-            <IngredientStorage/>
+
             <ProcessContainer/>
         </div>
     )

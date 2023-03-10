@@ -52,7 +52,7 @@ const RecipeForm = () => {
 
     const submitIngredient = (event) => {
         event.preventDefault();
-        formFields.ingredients.push({ingredient_id:ingredient,quantity:quantity});
+        formFields.ingredients.push({name:ingredient,quantity:quantity});
         setIngredient('');
         setQuantity('');
         alert('Ingrediente agregado exitosamente a la receta');
