@@ -5,7 +5,6 @@ import './recipe-form.styles.scss';
 import Select from 'react-select';
 const RecipeForm = () => {
     const defaultFormFields = {
-        id:'',
         name:'',
         ingredients:[],
     }
@@ -13,6 +12,7 @@ const RecipeForm = () => {
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
     const {name,id} = formFields;
+    const [recipeExists, setRecipeExists] = useState(false);
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
@@ -29,7 +29,6 @@ const RecipeForm = () => {
         }
         fetchData()
     },[]);
-      
 
     //handlers
     const handleChange = (event) => {
@@ -61,13 +60,19 @@ const RecipeForm = () => {
     const submitData = (event) => {
         submitIngredient(event);
         event.preventDefault();
-        const id=Math.random()*100000000;
-        formFields.id=Math.round(id);
         const sendData = async() => {
-            await fetch(url, {
+            await fetch('http://localhost:3000/api/addRecipe', {
                 method:"PUT",
+                headers:{
+                    'Content-type': 'application/json',
+                },
                 body:JSON.stringify(formFields),
             })
+            .then(response => response.json())
+                .then(response => {
+                    if (response.updated)
+                        setRecipeExists(true);
+                })
             .catch( e => console.log(e));
         }
         sendData();
@@ -76,7 +81,7 @@ const RecipeForm = () => {
     }
 
 
-    if (index === 0 && !isLoading)
+    if (index === 0)
         return(
             <div className='recipe-container'>
                 <h2 >Editar o Agregar Receta</h2>
@@ -104,10 +109,12 @@ const RecipeForm = () => {
         return (
             <div className='recipe-container'>
                 <h2 >Receta Editada!</h2>
-                <p>La receta <em>{name.toUpperCase()}</em> fue editada exitosamente en el inventario. </p>
+                <p>La receta <em>{name.toUpperCase()}</em> fue {recipeExists?'editada':'agregada'} exitosamente en el inventario. </p>
                 <Button type='button'  buttonType='dark' onClick={handleClick}>REGRESAR</Button>
             </div>
         )
+
+
 }
 
 export default RecipeForm

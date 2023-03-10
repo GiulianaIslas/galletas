@@ -9,7 +9,7 @@ router.post('/addIngredient', addIngredient)
 
 router.get('/getAllIngredients', getAllIngredients)
 
-router.get('/validateRecipe/:id', validateRecipe)
+router.get('/validateRecipe/:name', validateRecipe)
 
 router.get('/getAllRecipes', getAllRecipes)
 

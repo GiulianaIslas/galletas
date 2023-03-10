@@ -4,20 +4,17 @@ import Button from "../button/button.component.js";
 import './ingredient-form.styles.scss';
 const IngredientForm = () =>{
     const defaultFormFields = {
-        id:'',
         name:'',
         quantity:'',
     }
     const [formFields,setFormFields]=useState(defaultFormFields);
-    const {id,name,quantity } = formFields;
+    const {name,quantity } = formFields;
     const [success,setSuccess] = useState(false);
     const [containerIndex, setContainerIndex] = useState(0);
 
     const handleChange = (event) => {
         event.preventDefault();
         const {name,value} = event.target;
-        const id=Math.random()*100000000;
-        formFields.id=Math.round(id);
         setFormFields({...formFields,[name]:value.toLowerCase()});
     }
 
@@ -28,11 +25,6 @@ const IngredientForm = () =>{
 
     const sumbitData = (event) => {
         event.preventDefault();
-        const fields = {
-            id: formFields.id,
-            name: formFields.name,
-            quantity: formFields.quantity
-        }
         
         const postData = async() => {
             await fetch("http://localhost:3000/api/addIngredient",{
