@@ -26,7 +26,7 @@ const IngredientForm = () =>{
         setFormFields({...formFields,['quantity']:event.target.valueAsNumber});
     }
 
-    const sumbitData =  (event) => {
+    const sumbitData = async (event) => {
         event.preventDefault();
         const fields = {
             id: formFields.id,
