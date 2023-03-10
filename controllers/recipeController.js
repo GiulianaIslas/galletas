@@ -39,7 +39,7 @@ export const deleteRecipe = async( req, res ) => {
         return
     }
     else{
-        await Recipe.findOneAndRemove( {id: req.params.id} )
+        await Recipe.findOneAndRemove( {id: req.params.name} )
         res.sendStatus(200)
     }
 }
