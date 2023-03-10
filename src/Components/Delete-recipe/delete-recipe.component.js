@@ -4,14 +4,11 @@ import Button from "../button/button.component.js";
 import './delete-recipe.styles.scss';
 
 const DeleteRecipe = () => {
-    const defaultRecipe = {
-        name:'',
-    };
-    const [recipe,setRecipe] = useState(defaultRecipe);
+    const [recipe,setRecipe] = useState('');
     const {name} = recipe;
     const [index,setIndex] = useState(0);
     const [success,setSuccess] = useState(false);
-    const [recipes,setRecipes] = useState(null);
+    const [recipes,setRecipes] = useState([{name:'',quantity:''}]);
 
     useEffect(()=>{
         const url = "http://localhost:3000/api/getAllRecipes";
@@ -25,12 +22,12 @@ const DeleteRecipe = () => {
     },[]);
 
     const handleSelectChange = ({value}) => {
-        setRecipe({...recipe,['name']:value});
+        setRecipe(value);
     }
 
     const handleClick = () => {
         setIndex(0);
-        setRecipe(defaultRecipe);
+        setRecipe('');
     }
     const submitData = (event) => {
         event.preventDefault();
