@@ -33,17 +33,23 @@ const RecipeForm = () => {
     const [fetch,setFetch] = useState(null);
     const [isLoading,setIsLoading] = useState(false);
 
-    /*
+
     useEffect(()=>{
-        fetch ('../../Data/ingredients.json')
-            .then((data)=>{data.json()})
-            .then(data=> {
-                setFetch(JSON.parse(data));
-                setIsLoading(false);
-            })
+        const url = './ingredients.json';
+
+        const fetchData = async() => {
+        try{
+            const response = await fetch (url);
+            const json = await response.json();
+            console.log(json);
+            }catch (error) {
+            console.log("error");
+            }
+        };
+        fetchData();
     },[]);
 
-     */
+
     //handlers
     const handleChange = (event) => {
         const {name,value} = event.target;
