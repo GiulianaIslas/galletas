@@ -35,6 +35,11 @@ const DeleteRecipe = () => {
     }
     const submitData = (event) => {
         event.preventDefault();
+        fetch('http://localhost:3000/api/deleteRecipe/{id}',{
+            method: "POST",
+            body: JSON.stringify(recipe),
+        }).then(response=>response.json())
+            .then(json=> console.log(json));
         console.log(JSON.stringify(recipe));
         setIndex(1);
     }

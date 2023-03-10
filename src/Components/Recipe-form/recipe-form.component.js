@@ -51,11 +51,9 @@ const RecipeForm = () => {
         setFormFields(defaultFormFields);
     }
 
-    ///////ENDPOINT: editRecipe(json)
     const submitIngredient = (event) => {
         event.preventDefault();
         formFields.ingredients.push({ingredient_id:ingredient,quantity:quantity});
-        console.log(JSON.stringify(formFields));
         setIngredient('');
         setQuantity('');
         alert('Ingrediente agregado exitosamente a la receta');
@@ -65,6 +63,10 @@ const RecipeForm = () => {
         event.preventDefault();
         const id=Math.random()*100000000;
         formFields.id=Math.round(id);
+        fetch('http://localhost:3000/api/editRecipe',{
+            method: 'PUT',
+            body:JSON.stringify(formFields)
+        }).then(response => response.json()).then(json=>console.log(json));
         console.log(JSON.stringify(formFields));
         setIndex(1);
     }
