@@ -49,11 +49,9 @@ export const getAllRecipes = async (req, res) => {
     console.log(recipes)
 
     if( recipes.length === 0 ){
-        console.log('empty')
         res.json({empty: 'true'})
     }
     else{
-        console.log('not empty')
         res.json( recipes )
     }
 }
