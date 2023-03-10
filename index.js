@@ -12,12 +12,13 @@ mongoose.connect('mongodb://localhost/cookieFactory',{
 // Create server app
 const app = express()
 
-// Add react rendering
-app.use(express.static('./build'))
-
 // Enable bodyparser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+// Add react rendering
+app.use(express.static('./build'))
+
 
 // Adding routes
 app.use('/api', router)

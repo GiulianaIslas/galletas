@@ -27,13 +27,20 @@ const IngredientForm = () =>{
     }
     ///////////////ENDPOINT: addIngredient(json)
 
-    const sumbitData = (event) => {
+    const sumbitData = async (event) => {
         event.preventDefault();
-
-        fetch("http://localhost:3000/api/addIngredient", {
+        const fields = {
+            id: formFields.id,
+            name: formFields.name,
+            quantity: formFields.quantity
+        }
+        console.log(fields);
+        await fetch("http://localhost:3000/api/addIngredient", {
             method: "POST",
-            headers: {"Content-Type": "json"},
-            body: JSON.stringify(formFields),
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(fields),
         })
             .then((response) => response.json())
             .then((data) => {
@@ -44,7 +51,7 @@ const IngredientForm = () =>{
                 console.error("Error:", error);
             });
 
-        console.log(formFields);
+       
         setContainerIndex(1);
     }
 
