@@ -3,6 +3,7 @@ import { Warehouse } from '../models/Warehouse.js'
 // Agregar nuevo ingrediente o modificar su cantidad
 
 export const addIngredient = async (req, res) => {
+    console.log(req.body)
         if (!req.body.name || !req.body.quantity || !req.body.name){
             res.sendStatus(400)
         }
