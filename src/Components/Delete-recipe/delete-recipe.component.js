@@ -4,80 +4,26 @@ import Button from "../button/button.component.js";
 import './delete-recipe.styles.scss';
 
 const DeleteRecipe = () => {
-    //////ENDPOINT GET recipeList
-    const recipes =
-        [
-            {
-                "id": 74529,
-                "name": "chispas",
-                "ingredients": [
-                    {
-                        "id": 45254,
-                        "name": "azucar",
-                        "quantity": 3
-                    },
-                    {
-                        "id":87512,
-                        "name": "chispas",
-                        "quantity": 3
-                    }
-                ]
-            },
-            {
-                "id": 45254,
-                "name": "mantequilla",
-                "ingredients": [
-                    {
-                        "id": 45254,
-                        "name": "azucar",
-                        "quantity": 3
-                    },
-                    {
-                        "id":87512,
-                        "name": "harina",
-                        "quantity": 3
-                    }
-                ]
-            },
-            {
-                "id": 45768,
-                "name": "chocolate",
-                "ingredients": [
-                    {
-                        "id": 45254,
-                        "name": "azucar",
-                        "quantity": 3
-                    },
-                    {
-                        "id":87512,
-                        "name": "harina",
-                        "quantity": 3
-                    }
-                ]
-            }
-        ];
-
     const defaultRecipe = {
-        id:'',
+        name:'',
     };
     const [recipe,setRecipe] = useState(defaultRecipe);
-    const {id} = recipe;
+    const {name} = recipe;
     const [index,setIndex] = useState(0);
     const [success,setSuccess] = useState(false);
-    const [isLoading,setIsLoading] = useState(false);
-    //const [fetch,setFetch] =useState(null);
+    const [recipes,setRecipes] = useState(null);
 
-    /*
     useEffect(()=>{
-        fetch ('../../Data/recipes.json')
-            .then((data)=>{data.json()})
-            .then(data=> {
-                setFetch(JSON.parse(data));
-                setIsLoading(false);
-                console.log(fetch);
-            })
+        const url = "http://localhost:3000/api/getAllRecipes";
+        const fetchData = async() => {
+            await fetch(url)
+                .then( response => response.json() )
+                .then( json => setRecipes(json))
+                .catch( e => console.log(e) )
+        }
+        fetchData()
     },[]);
-    */
+
     const handleSelectChange = ({value}) => {
         setRecipe({...recipe,['id']:value});
     }
@@ -88,26 +34,20 @@ const DeleteRecipe = () => {
     }
     const submitData = (event) => {
         event.preventDefault();
-        /*
-        fetch(`http://localhost:3000/api/deleteRecipe/${id}`,{
-            method: "DELETE",
-        }).then(response=>response.json())
-            .then(json=> console.log(json))
-            .then(()=> setSuccess(true));
-
-         */
-        setSuccess(true);
-        setIndex(1);
+        const sendData = async() => {
+            await fetch(`http://localhost:3000/api/deleteRecipe/${name}`, {
+                method:"DELETE",
+            })
+                .then(response => {
+                    console.log(response);
+                    setSuccess(true);
+                    setIndex(1);
+                })
+                .catch( e => console.log(e));
+        }
+        sendData();
     }
-    if(index===0 && isLoading)
-        return(
-            <div className='delete-container'>
-                <h2 >Eliminar Receta</h2>
-                <p>Cargando...</p>
-            </div>
-        )
-
-    if(index===0 && !isLoading)
+    if(index===0)
         return(
             <div className='delete-container'>
                 <h2 >Eliminar Receta</h2>
