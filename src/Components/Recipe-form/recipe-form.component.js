@@ -24,6 +24,12 @@ const RecipeForm = () => {
             quantity:'8',
         }
     ]
+    const fetchIngredients = async () => {
+        await fetch ('http://localhost:3000/api/getAllIngredients')
+            .then((data)=>{return data.json()});
+    }
+    const options = fetchIngredients();
+
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
     const {name,id} = formFields;
@@ -83,7 +89,7 @@ const RecipeForm = () => {
                     <div className='ingredients-container'>
                         <label className='label'>Ingrediente</label>
                             <div className='select-recipe'>
-                                <Select onChange={handleSelectChange} options={ingredients.map(sup => ({label:sup.name,value:sup.id}))}/>
+                                <Select onChange={handleSelectChange} options={options.map(sup => ({label:sup.name,value:sup.id}))}/>
                             </div>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>
