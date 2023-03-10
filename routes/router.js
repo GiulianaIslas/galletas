@@ -1,7 +1,7 @@
 import express from "express"
 
 import { addIngredient, getAllIngredients } from '../controllers/warehouseController.js'
-import { editRecipe, validateRecipe, deleteRecipe, getAllRecipes } from '../controllers/recipeController.js'
+import { addRecipe, validateRecipe, deleteRecipe, getAllRecipes } from '../controllers/recipeController.js'
 
 const router = express.Router()
 
@@ -13,7 +13,7 @@ router.get('/validateRecipe/:id', validateRecipe)
 
 router.get('/getAllRecipes', getAllRecipes)
 
-router.put('/editRecipe', editRecipe)
+router.put('/addRecipe', addRecipe)
 
 router.delete('/deleteRecipe/:id', deleteRecipe)
 

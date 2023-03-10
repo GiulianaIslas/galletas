@@ -33,25 +33,24 @@ const IngredientForm = () =>{
             name: formFields.name,
             quantity: formFields.quantity
         }
-        /*
-        fetch('../../Data/ingredients.json', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(fields)
-        })
-            .then(res => res.json())
-            .then(res=> {
-                console.log(res);
-                setSuccess('added');
+        
+        const postData = async() => {
+            await fetch("http://localhost:3000/api/addIngredient",{
+                method:"POST",
+                headers: {
+                    "Content-type" : "application/json"
+                },
+                body:JSON.stringify(formFields),
             })
-
-         */
-        setSuccess('added');
-        setFormFields(defaultFormFields);
-        setContainerIndex(1);
-
+            .then(response=>{
+                console.log(response);
+                setSuccess('added');
+                setFormFields(defaultFormFields);
+                setContainerIndex(1);
+            })
+            .catch( e => console.log(e) );
+        }
+        postData();
     }
 
     const handleClick = () => {

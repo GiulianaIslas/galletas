@@ -10,29 +10,13 @@ const RecipeForm = () => {
         ingredients:[],
     }
 
-    //////////ENDPOINT getIngredientList
-    const ingredients = [
-        {
-            id:74529,
-            name:'harina',
-            quantity:'3',
-        },
-        {
-            id:45254,
-            name:'azucar',
-            quantity:'8',
-        }
-    ]
-
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
     const {name,id} = formFields;
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
-
-    const [isLoading,setIsLoading] = useState(false);
-
+    const [ ingredients, setIngredients ]  = useState([])
 
     useEffect(()=>{
         const url = "http://localhost:3000/api/getAllIngredients";
@@ -40,12 +24,12 @@ const RecipeForm = () => {
         const fetchData = async() => {
             await fetch(url)
             .then( response => response.json() )
-            .then( json => console.log(json))
+            .then( json => setIngredients(json))
             .catch( e => console.log(e) )
         }
         fetchData()
     },[]);
-
+      
 
     //handlers
     const handleChange = (event) => {
@@ -79,12 +63,14 @@ const RecipeForm = () => {
         event.preventDefault();
         const id=Math.random()*100000000;
         formFields.id=Math.round(id);
-        /*
-        fetch('http://localhost:3000/api/editRecipe',{
-            method: 'PUT',
-            body:JSON.stringify(formFields)
-        }).then(response => response.json()).then(json=>console.log(json));
-         */
+        const sendData = async() => {
+            await fetch(url, {
+                method:"PUT",
+                body:JSON.stringify(formFields),
+            })
+            .catch( e => console.log(e));
+        }
+        sendData();
         console.log(formFields);
         setIndex(1);
     }
@@ -101,7 +87,7 @@ const RecipeForm = () => {
                     <div className='ingredients-container'>
                         <label className='label'>Ingrediente</label>
                             <div className='select-recipe'>
-                                <Select onChange={handleSelectChange} options={ingredients.map(op => ({label:op.name,value:op.id}))}/>
+                                <Select onChange={handleSelectChange} options={ingredients.map(op => ({label:op.name.toLowerCase(),value:op.id}))}/>
                             </div>
                         <label className='label'>Cant.<input className='input' required type='number' onChange={handleQuantityChange} name='quantity' value={quantity}/></label>
                     </div>

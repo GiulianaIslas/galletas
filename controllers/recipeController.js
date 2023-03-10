@@ -5,7 +5,7 @@ export const validateRecipe = async ( req, res ) => {
         res.sendStatus(400)
     }
     else{
-        const result = await Recipe.findOne({id: req.params.id})
+        const result = await Recipe.findOne({name: req.params.name})
         if( !result ){
             res.json({exists: false})
         }
@@ -15,19 +15,19 @@ export const validateRecipe = async ( req, res ) => {
     }
 }
 
-export const editRecipe = async ( req, res ) => {
+export const addRecipe = async ( req, res ) => {
     console.log(req.body)
     if( !req.body.id && !req.body.ingredients ){
         res.sendStatus(400)
     }
     else{
-        const exists = await Recipe.findOne( {id: req.body.id} )
+        const exists = await Recipe.findOne( {name: req.body.name} )
         if( !exists ){
             await Recipe.create(req.body)
             res.sendStatus(200)
         }
         else{
-            await Recipe.findOneAndUpdate({id: req.body.id}, req.body)
+            await Recipe.findOneAndUpdate({name: req.body.name}, req.body)
             res.sendStatus(200)
         }
     }
