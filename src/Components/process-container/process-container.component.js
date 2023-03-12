@@ -99,19 +99,21 @@ const ProcessContainer = () => {
             </div>
             <div className="recetas">
                 <div className="formulario-receta">
-                    <label >
-                        Selecciona la receta a fabricar:
-                    </label>
-                    <select onChange={ e => setRecipe(e.target.value)}>
-                        <option value={''}>-------</option>
-                            { recipes.length ? (
-                                recipes.map( e => (
-                                    <option key={e._id} value={e.name}>{e.name}</option>
-                                ))
-                            )
-                            : ''
-                            }
-                    </select>
+                    <div className="formulario-receta-contenedor">
+                        <label >
+                            Selecciona la receta a fabricar:
+                        </label>
+                        <select onChange={ e => setRecipe(e.target.value)}>
+                            <option value={''}>-------</option>
+                                { recipes.length ? (
+                                    recipes.map( e => (
+                                        <option key={e._id} value={e.name}>{e.name}</option>
+                                    ))
+                                )
+                                : ''
+                                }
+                        </select>
+                    </div>
                     <div className="formulario-receta-cantidad">
                         <label>Cantidad</label>
                         <input type="number" min={1} value={cantidad} onChange={e => setCantidad(e.target.value)}></input>
@@ -123,7 +125,7 @@ const ProcessContainer = () => {
                 <div className="ingredientes-div">
                             { ingredients.length ? (
                                 ingredients.map( e => (
-                                    <p key={e._id}>  <span className="ingredientes-span">{e.name}  </span> Cantidad disponible:{e.quantity}</p>
+                                    <p className="ingrediente" key={e._id}>  <span className="ingredientes-span">{e.name}  </span> Cantidad disponible: {e.quantity}</p>
                                 ))
                             )
                             : ''
