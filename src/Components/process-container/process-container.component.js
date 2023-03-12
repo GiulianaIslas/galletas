@@ -79,8 +79,8 @@ const ProcessContainer = () => {
 
     return(
         <div className='process-container'>
+            
             <div className="process">
-
                 <div className='row'>
                     <Button buttonType='light' type='button'>Iniciar Amasado</Button>
                     <div className='amasador'>3.AMASADOR</div>
