@@ -46,7 +46,7 @@ export const deleteRecipe = async( req, res ) => {
 
 export const getAllRecipes = async (req, res) => {
     const recipes = await Recipe.find({}).exec()
-    console.log(recipes)
+    //console.log(recipes)
 
     if( recipes.length === 0 ){
         res.json({empty: 'true'})
