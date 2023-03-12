@@ -6,8 +6,9 @@ import cors from 'cors'
 
 // Connect to mongodb
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/cookieFactory',{
-    useNewUrlParser: true
+mongoose.connect('mongodb://admin:Josea&9142@localhost',{
+    useNewUrlParser: true,
+    dbName: "cookieFactory"
 })
 
 // Create server app

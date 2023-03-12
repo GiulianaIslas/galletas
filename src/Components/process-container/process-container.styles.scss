@@ -1,13 +1,19 @@
 .process-container{
   border-radius: 10px;
-  margin: 5px;
+  margin: 0 1.25rem;
+  padding: 0 1.25rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 75%;
+  width: 90%;
   height: 80%;
   background-color: white;
+}
+.process{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    height: 100%;
 }
 .row{
   display: flex;
@@ -74,3 +80,58 @@
   align-items: center;
 }
 
+.ingredientes-span{
+    font-weight: 800 !important;
+    font-style: normal;
+    font-size: 0.8rem;
+    color: black;
+}
+
+.ingredientes-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 10rem;
+    margin-bottom: 1.25rem;
+}
+.formulario-receta{
+    margin-bottom: 1.25rem;
+    display: flex;
+    font-size: .8rem;
+    justify-content: space-between;
+    label{
+        font-size: .8rem;
+        width: 30%;
+    }
+    input{
+        width: 20%;
+        border: none;
+        background-color: rgba(128, 128, 128, 0.492);
+        padding: 0rem 0.5rem;
+        border-radius: .2rem;
+    }
+    select{
+        width: 15%;
+        border: none;
+        background-color: rgba(128, 128, 128, 0.492);
+        padding: 0rem 0.5rem;
+        border-radius: .2rem;
+    }
+    
+}
+.message{
+    font-weight: bold;
+}
+
+.formulario-receta-cantidad{
+    display: flex;
+    gap: 1.25rem;
+}
+
+.recetas{
+    margin-left: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.178);
+    padding: 1rem;
+    border-radius: 1rem;
+}
