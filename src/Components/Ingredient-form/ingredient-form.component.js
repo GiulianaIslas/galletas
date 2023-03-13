@@ -38,10 +38,10 @@ const IngredientForm = () =>{
             })
             .then(response=>{
                 console.log(response);
-                setSuccess('added');
                 setFormFields(defaultFormFields);
                 setContainerIndex(1);
                 setChange(true);
+                setSuccess(true);
             })
             .catch( e => console.log(e) );
         }
@@ -71,7 +71,7 @@ const IngredientForm = () =>{
         return (
             <div className='ingredient-container'>
                 <h2>Ingrediente Agregado!</h2>
-                <p>El ingrediente <em>{name.toUpperCase()}</em> fue {success} exitosamente al inventario. </p>
+                <p>El ingrediente <em>{name.toUpperCase()}</em> fue agregado exitosamente al inventario. </p>
                 <Button type='button'  buttonType='dark' onClick={handleClick}>REGRESAR</Button>
             </div>
         );

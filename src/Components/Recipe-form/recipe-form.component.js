@@ -12,7 +12,7 @@ const RecipeForm = () => {
 
     //state
     const [formFields,setFormFields]=useState(defaultFormFields);
-    const {name,id} = formFields;
+    const {name} = formFields;
     const [recipeExists, setRecipeExists] = useState(false);
     const [quantity,setQuantity] = useState('');
     const [ingredient,setIngredient] =useState('');
