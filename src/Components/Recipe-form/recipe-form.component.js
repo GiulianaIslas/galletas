@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import FormInput from "../Form-input/form-input.component.js";
 import Button from "../button/button.component.js";
+import {UpdateContext} from "../../Context/update.context.js";
 import './recipe-form.styles.scss';
 import Select from 'react-select';
 const RecipeForm = () => {
@@ -17,7 +18,7 @@ const RecipeForm = () => {
     const [ingredient,setIngredient] =useState('');
     const [index,setIndex] = useState(0);
     const [ ingredients, setIngredients ]  = useState([])
-
+    const {change,setChange} = useContext(UpdateContext);
     useEffect(()=>{
         const url = "http://localhost:3000/api/getAllIngredients";
 
@@ -28,7 +29,7 @@ const RecipeForm = () => {
             .catch( e => console.log(e) )
         }
         fetchData()
-    },[]);
+    },[change]);
 
     //handlers
     const handleChange = (event) => {
@@ -48,6 +49,7 @@ const RecipeForm = () => {
     const handleClick = () => {
         setIndex(0);
         setFormFields(defaultFormFields);
+        setChange(false);
     }
 
     const submitIngredient = (event) => {
@@ -70,8 +72,10 @@ const RecipeForm = () => {
             })
             .then(response => response.json())
                 .then(response => {
-                    if (response.updated)
+                    if (response.updated) {
                         setRecipeExists(true);
+                        setChange(true);
+                    }
                 })
             .catch( e => console.log(e));
         }

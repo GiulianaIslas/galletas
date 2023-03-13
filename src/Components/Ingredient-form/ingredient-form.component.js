@@ -1,12 +1,14 @@
-import {useState} from "react";
+import {useState,useContext} from "react";
 import FormInput from "../Form-input/form-input.component.js";
 import Button from "../button/button.component.js";
+import {UpdateContext} from "../../Context/update.context.js";
 import './ingredient-form.styles.scss';
 const IngredientForm = () =>{
     const defaultFormFields = {
         name:'',
         quantity:'',
     }
+    const {setChange} = useContext(UpdateContext);
     const [formFields,setFormFields]=useState(defaultFormFields);
     const {name,quantity } = formFields;
     const [success,setSuccess] = useState(false);
@@ -39,6 +41,7 @@ const IngredientForm = () =>{
                 setSuccess('added');
                 setFormFields(defaultFormFields);
                 setContainerIndex(1);
+                setChange(true);
             })
             .catch( e => console.log(e) );
         }
@@ -49,6 +52,7 @@ const IngredientForm = () =>{
         setContainerIndex(0);
         setFormFields(defaultFormFields);
         setSuccess(false);
+        setChange(false);
     }
 
     if (containerIndex===0)

@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState,useContext} from "react";
 import Select from "react-select";
 import Button from "../button/button.component.js";
+import {UpdateContext} from "../../Context/update.context.js";
 import './delete-recipe.styles.scss';
 
 const DeleteRecipe = () => {
@@ -9,7 +10,7 @@ const DeleteRecipe = () => {
     const [index,setIndex] = useState(0);
     const [success,setSuccess] = useState(false);
     const [recipes,setRecipes] = useState([{name:'',quantity:''}]);
-
+    const {change,setChange} = useContext(UpdateContext);
     useEffect(()=>{
         const url = "http://localhost:3000/api/getAllRecipes";
         const fetchData = async() => {
@@ -19,7 +20,7 @@ const DeleteRecipe = () => {
                 .catch( e => console.log(e) )
         }
         fetchData();
-    },[]);
+    },[change]);
 
     const handleSelectChange = ({value}) => {
         setRecipe(value);
@@ -28,6 +29,7 @@ const DeleteRecipe = () => {
     const handleClick = () => {
         setIndex(0);
         setRecipe('');
+        setChange(false);
     }
     const submitData = (event) => {
         event.preventDefault();
@@ -39,6 +41,7 @@ const DeleteRecipe = () => {
                     console.log(response);
                     setSuccess(true);
                     setIndex(1);
+                    setChange(true);
                 })
                 .catch( e => console.log(e));
         }
